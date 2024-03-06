@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* body {
+            background-image: url('./j1.svg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        } */
+
+        input {
+            border-radius: 0.9ch;
+        }
+        .container1 {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-evenly;
+            width: 100%;
+            height: 80%;
+        } 
+        .top-left {
+            position: absolute;
+            top:1px;
+            left: 16px;
+            } 
+            .top-leftt {
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            }   
+          </style>
+          <script>
+            function myFunction(){
+                  var myForm = document.getElementById("new").value;
+                  console.log(myForm)
+                  if(myForm.charAt(0)!="0" && myForm.charAt(0)!="1")
+                  window.alert("Enter a value between 0 to 1");
+                  else if(myForm.charAt(0)=="1")
+                  {
+                        for(var i=2;i<myForm.length-1;i++)
+                        {
+                              if(myForm.charAt(i)!="0")
+                              window.alert("Enter a value between 0 to 1");
+                        }
+                  }
+            }
+      </script>
+    <title>home</title>
+</head>
+
+<body>
+    <div class="top-left">
+        <div class="top-leftt">
+            Logged in : <strong>{{session.name}} | <a href="{{ url_for('logout') }}"> Logout</a>
+        </div>
+    </div>
+    
+    <div class="container1">
+        <div class="right">
+            <img src="{{url_for('static', filename='images/j1.svg')}}" />
+
+        </div>
+        <div class="left">
+            <header>
+                <center>
+                    <h1>EMPLOYEE ATTRITION PREDICTION</h1>
+                </center>
+            </header>
+            <form action={{url_for('result')}} method="POST" name="form">
+                <center>
+                    <table cellspacing="30">
+                        <tr>
+                            <td> Satisfaction_level</td>
+                            <td> <input type="text" name="satisfaction_level" id="new" onchange="myFunction()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Last_Evaluation</td>
+                            <td><input type="text" name="last_evaluation" id="new" onchange="myFunction()"/></td>
+                        </tr>
+                        <tr>
+                            <td>No of projects</td>
+                            <td><input type="number" name="number_of_projects" required /></td>
+                        </tr>
+                        <tr>
+                            <td>Average_Monthly _Hours</td>
+                            <td><input type="number" name="average_montly_hours" required /></td>
+                        </tr>
+                        <tr>
+                            <td>Years_At_Company</td>
+                            <td><input type="number" name="years_at_company" required /></td>
+                        </tr>
+                        <tr>
+                            <td>Work_Accident</td>
+                            <td><input type="text" name="work_accident" required /></td>
+                        </tr>
+                        <tr>
+                            <td>Promotion</td>
+                            <td><input type="text" name="promotion_last_5years" required /></td>
+                        </tr>
+                        <tr>
+                            <td>Department</td>
+                            <td>
+                                <select name="department">
+                                    <option value=7>sales</option>
+                                    <option value=2>accounting</option>
+                                    <option value=3>hr</option>
+                                    <option value=9>technical</option>
+                                    <option value=4>management</option>
+
+                                    <option value=0>IT</option>
+                                    <option value=6>product_mng</option>
+                                    <option value=5>marketing</option>
+                                    <option value=1>RandD</option>
+                                </select>
+                            </td>
+                        </tr>
+
+
+                        <!--   <p>salary<input type ="text" name = "salary" />  -->
+                        <tr>
+                            <td>salary</td>
+                            <td>
+                                <select name="salary">salary
+                                    <option value=1>low</option>
+                                    <option value=2>medium</option>
+                                    <option value=3>high</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                    <p><input type="submit" value="submit" /></p>
+                </center>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
